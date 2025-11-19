@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Billekanti Pujitha Sai - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .glassmorphism { background: rgba(200,162,200,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); }
+        .parallax-bg { background: linear-gradient(135deg,#C8A2C8,#E6E6FA); background-attachment: fixed; }
+        .typewriter h1 { overflow:hidden; white-space:nowrap; animation: typing 3s steps(40,end); }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+
+        /* Social circle style (matches site color #800000) */
+        .social-circle {
+          width: 56px;
+          height: 56px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 9999px;
+          border: 2px solid rgba(255,255,255,0.12);
+          background: #800000; /* same maroon as other buttons */
+          box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+          transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+          cursor: pointer;
+          pointer-events: auto;
+          text-decoration: none;
+        }
+        .social-circle:hover { transform: translateY(-4px) scale(1.06); box-shadow: 0 12px 26px rgba(0,0,0,0.16); }
+        .social-icon { color: #ffffff; font-size: 20px; }
+
+        /* Modal */
+        .modal-backdrop { background: rgba(0,0,0,0.55); position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; z-index:50; }
+        .modal-card { width: 90%; max-width: 900px; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.35); }
+        .modal-header { display:flex; align-items:center; justify-content:space-between; padding: 14px 18px; border-bottom: 1px solid #eee; }
+        .modal-body { height: 70vh; min-height: 360px; }
+        @media (max-width:640px) { .modal-body { height: 60vh } }
+
+        /* small accessibility */
+        a[role="button"] { cursor: pointer; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navigation Bar -->
+<nav class="fixed w-full top-0 z-20 glassmorphism shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-white">Pujitha Sai</h1>
+        <ul class="flex space-x-6 text-white">
+            <li><a href="#home" class="hover:text-[#A52A2A] transition">Home</a></li>
+            <li><a href="#about" class="hover:text-[#A52A2A] transition">About</a></li>
+            <li><a href="#projects" class="hover:text-[#A52A2A] transition">Projects</a></li>
+            <li><a href="#skills" class="hover:text-[#A52A2A] transition">Skills</a></li>
+            <li><a href="#contact" class="hover:text-[#A52A2A] transition">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center parallax-bg text-white">
+    <div class="text-center fade-in">
+        <img src="https://raw.githubusercontent.com/Pujitha-sai/portfolio/main/Profile_Pic.jpg" alt="Profile" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
+        <h1 class="text-5xl font-bold mb-4 typewriter">Billekanti Pujitha Sai</h1>
+        <p class="text-xl mb-6" id="typewriter-text">Aspiring Software Engineer</p>
+
+        <!-- Social buttons row (LinkedIn, GitHub, Mail) and Resume button -->
+        <div class="flex items-center justify-center gap-4 mb-6">
+            <!-- LinkedIn -->
+            <a class="social-circle" href="https://www.linkedin.com/in/pujitha-sai" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+                <i class="fab fa-linkedin-in social-icon" aria-hidden="true"></i>
+            </a>
+
+            <!-- GitHub -->
+            <a class="social-circle" href="https://github.com/Pujitha-sai" target="_blank" aria-label="GitHub" title="GitHub">
+                <i class="fab fa-github social-icon" aria-hidden="true"></i>
+            </a>
+
+            <!-- Mail -->
+            <a id="mail-btn" class="social-circle" href="mailto:billekantipsujithasai@gmail.com" aria-label="Email" title="Email me">
+                <i class="fas fa-envelope social-icon" aria-hidden="true"></i>
+            </a>
+
+            <!-- Resume (opens modal to view, also has download inside modal) -->
+            <button id="open-resume" class="ml-2 bg-[#800000] hover:bg-[#A52A2A] text-white px-5 py-3 rounded-full shadow-md transform hover:-translate-y-1 transition" aria-haspopup="dialog" aria-controls="resume-modal">
+                View Resume
+            </button>
+        </div>
+
+        <a href="#contact" class="bg-[#800000] text-white px-6 py-3 rounded-full hover:bg-[#A52A2A] transition transform hover:scale-105">Get in Touch</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">About Me</h2>
+        <div class="max-w-3xl mx-auto text-center fade-in">
+            <p class="text-lg text-gray-700">
+                I am a full-stack developer with strong problem-solving skills and a passion for building secure, scalable, and user-focused applications. 
+                I specialize in modern technologies like Python, React.js, Node.js, and MongoDB, and enjoy creating solutions that make a real impact. 
+                My work includes projects such as <b>Women Diversiform</b>, a safety-focused reporting platform, a <b>Twitter Recommendation System</b> powered by collaborative filtering, a User Behavior Prediction model for online advertising, and a full-stack MERN Address Book Application.
+                I’m driven by clean code, continuous learning, and the desire to build technology that truly helps people.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">Technical Skills</h2>
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
+                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-code mr-2"></i> Frontend</h3>
+                <p class="text-gray-700">React.js, JavaScript, HTML, CSS</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
+                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-database mr-2"></i> Backend</h3>
+                <p class="text-gray-700">Node.js, Express.js, RESTful Services</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
+                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-tools mr-2"></i> Database Technologies</h3>
+                <p class="text-gray-700">MongoDB, SQL</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
+                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-cogs mr-2"></i> ML & Data</h3>
+                <p class="text-gray-700">Python, Pandas, NumPy, Scikit-Learn</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
+                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-cogs mr-2"></i> Tools</h3>
+                <p class="text-gray-700">Git, GitHub, Visual Studio</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
+                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-cogs mr-2"></i> Core CS Concepts</h3>
+                <p class="text-gray-700">OOP, DBMS, Data Structures & Algorithms</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">Projects</h2>
+        <div class="max-w-4xl mx-auto grid gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
+                <h3 class="text-xl font-semibold text-[#800000]"><i class="fas fa-shield-alt mr-2"></i> Women Diversiform</h3>
+                <p class="text-gray-700">A secure, full-stack web platform designed to help women report harassment or abuse and access legal and police assistance. Built with React.js, Node.js, and MongoDB, the application includes features such as phone-based authentication, OTP verification, encrypted data handling, complaint tracking, and real-time notifications. The platform prioritizes both user safety and system security, ensuring sensitive data is well protected.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
+                <h3 class="text-xl font-semibold text-[#800000]"><i class="fab fa-twitter mr-2"></i> Twitter Recommendation System</h3>
+                <p class="text-gray-700">Developed a machine learning-based recommendation engine using collaborative filtering to suggest personalized follow recommendations. The system analyzes user behavior, mutual connections, and interaction patterns to generate relevant suggestions. Built in Python, the project focuses on enhancing user engagement and was evaluated for accuracy and user relevance.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
+                <h3 class="text-xl font-semibold text-[#800000]"><i class="fas fa-ad mr-2"></i> User Behavior Prediction</h3>
+                <p class="text-gray-700">Designed and implemented a logistic regression model to predict whether a user would click on an advertisement, based on behavioral and demographic data. The project involved data preprocessing, model training, and evaluation using metrics like accuracy, precision, and confusion matrix. It provides insights into ad targeting and user engagement strategies.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
+                <h3 class="text-xl font-semibold text-[#800000]"><i class="fab fa-twitter mr-2"></i> Address Book Application</h3>
+                <p class="text-gray-700">Built a responsive contact management application using the MERN stack (MongoDB, Express.js, React.js, Node.js). The app allows users to perform CRUD operations, validate form inputs, and manage contact data efficiently. It features a clean UI and is integrated with RESTful APIs for smooth frontend-backend communication.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">Contact Me</h2>
+        <div class="max-w-3xl mx-auto text-center fade-in">
+            <p class="text-lg text-gray-700 mb-4"><i class="fas fa-envelope mr-2"></i> Email: billekantipsujithasai@gmail.com</p>
+            <p class="text-lg text-gray-700 mb-4"><i class="fas fa-phone mr-2"></i> Phone: +91 9553172422</p>
+
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold text-[#800000] mb-6">Send a Message</h3>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <input type="text" id="name" placeholder="Your Name" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A2C8]">
+                    <input type="email" id="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C8A2C8]">
+                    <textarea id="message" placeholder="Your Message" class="w-full p-3 mb-4 border rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-[#C8A2C8]"></textarea>
+                    <button onclick="sendMessage()" class="bg-[#800000] text-white px-6 py-3 rounded-full hover:bg-[#A52A2A] transition transform hover:scale-105">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#C8A2C8] text-white py-6">
+    <div class="container mx-auto px-4 text-center">
+        <p class="mb-2">© 2025 Pujitha Sai Billekanti. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="fixed bottom-6 right-6 bg-[#800000] text-white p-3 rounded-full shadow-lg hover:bg-[#A52A2A] transition opacity-0">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Resume Modal (hidden initially) -->
+<div id="resume-modal" class="hidden" aria-hidden="true">
+    <div class="modal-backdrop" role="dialog" aria-modal="true">
+        <div class="modal-card" role="document">
+            <div class="modal-header">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#800000] flex items-center justify-center text-white font-semibold">R</div>
+                    <div>
+                        <div class="font-semibold">Resume — Billekanti Pujitha Sai</div>
+                        <div class="text-sm text-gray-500">Preview & download</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <!-- Download link: uses Drive download URL -->
+                    <a id="download-resume" href="https://drive.google.com/uc?export=download&id=1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9" download class="text-sm px-3 py-2 bg-[#800000] text-white rounded-md hover:bg-[#A52A2A] transition">Download</a>
+                    <button id="close-resume" class="px-3 py-2 rounded-md bg-gray-100 hover:bg-gray-200">Close</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- Embedded Google Drive preview -->
+                <iframe id="resume-frame" src="https://drive.google.com/file/d/1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9/preview" title="Resume" width="100%" height="100%" style="border:none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Fade-in animations on scroll
+    const fadeIns = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    fadeIns.forEach(el => observer.observe(el));
+
+    // Typewriter effect
+    const texts = ['Aspiring Software Engineer', 'Passionate Developer', 'Machine Learning Enthusiast'];
+    let index = 0, charIndex = 0, currentText = '';
+    const typewriterElement = document.getElementById('typewriter-text');
+    function type() {
+        if (charIndex < texts[index].length) {
+            currentText += texts[index].charAt(charIndex);
+            typewriterElement.textContent = currentText;
+            charIndex++;
+            setTimeout(type, 100);
+        } else {
+            setTimeout(() => { charIndex = 0; currentText = ''; index = (index + 1) % texts.length; type(); }, 2000);
+        }
+    }
+    type();
+
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) { backToTop.classList.add('opacity-100'); backToTop.classList.remove('opacity-0'); }
+        else { backToTop.classList.add('opacity-0'); backToTop.classList.remove('opacity-100'); }
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Form submission
+    function sendMessage() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        if (name && email && message) {
+            alert('Thank you, ' + name + '! Your message has been sent.');
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        } else {
+            alert('Please fill in all fields.');
+        }
+    }
+
+    // Resume modal logic (uses Drive preview + download)
+    const openBtn = document.getElementById('open-resume');
+    const modal = document.getElementById('resume-modal');
+    const closeBtn = document.getElementById('close-resume');
+    const downloadLink = document.getElementById('download-resume');
+    const resumeFrame = document.getElementById('resume-frame');
+
+    // Use Drive preview link here (already set in HTML)
+    const resumePathPreview = "https://drive.google.com/file/d/1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9/preview";
+    const resumeDownload = "https://drive.google.com/uc?export=download&id=1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9";
+
+    openBtn.addEventListener('click', () => {
+        resumeFrame.src = resumePathPreview;
+        downloadLink.href = resumeDownload;
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // prevent background scroll
+        // set focus for accessibility
+        closeBtn.focus();
+    });
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+        resumeFrame.src = ''; // stop PDF from continuing to load
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close modal on backdrop click or ESC
+    document.addEventListener('click', (e) => {
+        if (!modal.classList.contains('hidden')) {
+            const backdrop = modal.querySelector('.modal-backdrop');
+            const card = modal.querySelector('.modal-card');
+            if (e.target === backdrop) closeModal();
+        }
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+    // Mail button fallback (mailto)
+    (function() {
+      const mailBtn = document.getElementById('mail-btn');
+      if (!mailBtn) return;
+      mailBtn.addEventListener('click', function(e) {
+        // default href should handle it; fallback to window.location if something blocks default
+        const mailto = this.getAttribute('href') || 'mailto:billekantipsujithasai@gmail.com';
+        try {
+          window.location.href = mailto;
+          setTimeout(() => { try { window.open(mailto, '_self'); } catch (err) {} }, 200);
+        } catch (err) {
+          try { window.open(mailto, '_blank'); } catch (e) { console.error(e); }
+        }
+        // don't prevent default to allow normal behavior when available
+      });
+    })();
+
+</script>
+</body>
+</html>
