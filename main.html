@@ -44,6 +44,65 @@
 
         /* small accessibility */
         a[role="button"] { cursor: pointer; }
+
+    .skill-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-3px);
+}
+
+.skill-icon {
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
+    border-radius: 50%;
+    background: rgba(128,0,0,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-icon i {
+    font-size: 28px;
+    color: #800000;
+}
+
+.skill-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #800000;
+    margin-bottom: 12px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-badge {
+    border: 1.5px solid #800000;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.skill-badge:hover {
+    background: #800000;
+    color: white;
+}
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -55,8 +114,8 @@
         <ul class="flex space-x-6 text-white">
             <li><a href="#home" class="hover:text-[#A52A2A] transition">Home</a></li>
             <li><a href="#about" class="hover:text-[#A52A2A] transition">About</a></li>
-            <li><a href="#projects" class="hover:text-[#A52A2A] transition">Projects</a></li>
             <li><a href="#skills" class="hover:text-[#A52A2A] transition">Skills</a></li>
+            <li><a href="#projects" class="hover:text-[#A52A2A] transition">Projects</a></li>
             <li><a href="#contact" class="hover:text-[#A52A2A] transition">Contact</a></li>
         </ul>
     </div>
@@ -64,35 +123,60 @@
 
 <!-- Hero Section -->
 <section id="home" class="min-h-screen flex items-center justify-center parallax-bg text-white">
-    <div class="text-center fade-in">
-        <img src="https://raw.githubusercontent.com/Pujitha-sai/portfolio/main/Profile_Pic.jpg" alt="Profile" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
-        <h1 class="text-5xl font-bold mb-4 typewriter">Billekanti Pujitha Sai</h1>
-        <p class="text-xl mb-6" id="typewriter-text">Aspiring Software Engineer</p>
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-12 fade-in">
+        <div class="flex-shrink-0">
+    <img
+    src="https://raw.githubusercontent.com/Pujitha-sai/portfolio/main/Profile_Pic.jpg"
+    alt="Profile"
+    class="w-72 h-80 object-cover object-top rounded-xl border-4 border-white shadow-2xl"
+>
+</div>
+        <div class="text-center md:text-left max-w-2xl">
 
-        <!-- Social buttons row (LinkedIn, GitHub, Mail) and Resume button -->
-        <div class="flex items-center justify-center gap-4 mb-6">
-            <!-- LinkedIn -->
-            <a class="social-circle" href="https://www.linkedin.com/in/pujitha-sai" target="_blank" aria-label="LinkedIn" title="LinkedIn">
-                <i class="fab fa-linkedin-in social-icon" aria-hidden="true"></i>
-            </a>
+    <h1 class="text-5xl md:text-6xl font-bold text-[#800000] mb-4">
+        Billekanti Pujitha Sai
+    </h1>
 
-            <!-- GitHub -->
-            <a class="social-circle" href="https://github.com/Pujitha-sai" target="_blank" aria-label="GitHub" title="GitHub">
-                <i class="fab fa-github social-icon" aria-hidden="true"></i>
-            </a>
+    <p class="text-3xl text-gray-800 mb-8">
+        <span id="typewriter-text"></span>
+    </p>
 
-            <!-- Mail -->
-            <a id="mail-btn" class="social-circle" href="mailto:billekantipsujithasai@gmail.com" aria-label="Email" title="Email me">
-                <i class="fas fa-envelope social-icon" aria-hidden="true"></i>
-            </a>
+    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-8">
 
-            <!-- Resume (opens modal to view, also has download inside modal) -->
-            <button id="open-resume" class="ml-2 bg-[#800000] hover:bg-[#A52A2A] text-white px-5 py-3 rounded-full shadow-md transform hover:-translate-y-1 transition" aria-haspopup="dialog" aria-controls="resume-modal">
-                View Resume
-            </button>
-        </div>
+        <a class="social-circle"
+           href="https://www.linkedin.com/in/pujitha-sai"
+           target="_blank">
+            <i class="fab fa-linkedin-in social-icon"></i>
+        </a>
 
-        <a href="#contact" class="bg-[#800000] text-white px-6 py-3 rounded-full hover:bg-[#A52A2A] transition transform hover:scale-105">Get in Touch</a>
+        <a class="social-circle"
+           href="https://github.com/Pujitha-sai"
+           target="_blank">
+            <i class="fab fa-github social-icon"></i>
+        </a>
+
+        <a
+    class="social-circle"
+    href="https://mail.google.com/mail/?view=cm&fs=1&to=billekantipsujithasai@gmail.com"
+    target="_blank"
+>
+    <i class="fas fa-envelope social-icon"></i>
+</a>
+
+        <button id="open-resume"
+                class="bg-[#800000] hover:bg-[#A52A2A] text-white px-6 py-3 rounded-lg shadow-lg transition">
+            <i class="fas fa-file-alt mr-2"></i>
+            View Resume
+        </button>
+
+    </div>
+
+    <a href="#contact"
+       class="inline-block bg-[#800000] text-white px-8 py-3 rounded-full hover:bg-[#A52A2A] transition transform hover:scale-105">
+       Get in Touch
+    </a>
+
+</div>
     </div>
 </section>
 
@@ -102,45 +186,106 @@
         <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">About Me</h2>
         <div class="max-w-3xl mx-auto text-center fade-in">
             <p class="text-lg text-gray-700">
-                I am a full-stack developer with strong problem-solving skills and a passion for building secure, scalable, and user-focused applications. 
-                I specialize in modern technologies like Python, React.js, Node.js, and MongoDB, and enjoy creating solutions that make a real impact. 
-                My work includes projects such as <b>Women Diversiform</b>, a safety-focused reporting platform, a <b>Twitter Recommendation System</b> powered by collaborative filtering, a User Behavior Prediction model for online advertising, and a full-stack MERN Address Book Application.
-                I’m driven by clean code, continuous learning, and the desire to build technology that truly helps people.
+                Analyst Trainee at Cognizant with expertise in Full-Stack Development, Software Engineering, and Data-Driven Problem Solving. Skilled in React.js, Node.js, JavaScript, Python, MongoDB, and SQL, with experience building scalable web applications, RESTful APIs, and machine learning solutions.
+Passionate about developing secure, efficient, and user-centric software, I enjoy transforming complex problems into practical solutions. With a strong foundation in Data Structures, Algorithms, OOP, and Database Systems, I continuously strive to enhance my technical expertise and contribute to impactful technology solutions.
             </p>
         </div>
     </div>
 </section>
 
 <!-- Skills Section -->
-<section id="skills" class="py-20 bg-white">
+<section id="skills" class="py-20 bg-gray-100">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">Technical Skills</h2>
-        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
-                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-code mr-2"></i> Frontend</h3>
-                <p class="text-gray-700">React.js, JavaScript, HTML, CSS</p>
+
+        <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">
+            Technical Skills
+        </h2>
+
+        <div class="max-w-4xl mx-auto space-y-6">
+
+            <!-- Languages & Frameworks -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+
+                <div class="flex-1">
+                    <h3 class="skill-heading">
+                        Languages & Frameworks
+                    </h3>
+
+                    <div class="skill-tags">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">React.js</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Express.js</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
-                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-database mr-2"></i> Backend</h3>
-                <p class="text-gray-700">Node.js, Express.js, RESTful Services</p>
+
+            <!-- Databases & Tools -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+
+                <div class="flex-1">
+                    <h3 class="skill-heading">
+                        Databases & Tools
+                    </h3>
+
+                    <div class="skill-tags">
+                        <span class="skill-badge">MongoDB</span>
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">GitHub</span>
+                        <span class="skill-badge">VS Code</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
-                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-tools mr-2"></i> Database Technologies</h3>
-                <p class="text-gray-700">MongoDB, SQL</p>
+
+            <!-- Machine Learning -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+
+                <div class="flex-1">
+                    <h3 class="skill-heading">
+                        Machine Learning & Data
+                    </h3>
+
+                    <div class="skill-tags">
+                        <span class="skill-badge">Pandas</span>
+                        <span class="skill-badge">NumPy</span>
+                        <span class="skill-badge">Scikit-Learn</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
-                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-cogs mr-2"></i> ML & Data</h3>
-                <p class="text-gray-700">Python, Pandas, NumPy, Scikit-Learn</p>
+
+            <!-- Core CS -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+
+                <div class="flex-1">
+                    <h3 class="skill-heading">
+                        Core Computer Science
+                    </h3>
+
+                    <div class="skill-tags">
+                        <span class="skill-badge">OOP</span>
+                        <span class="skill-badge">DBMS</span>
+                        <span class="skill-badge">Data Structures</span>
+                        <span class="skill-badge">Algorithms</span>
+                    </div>
+                </div>
             </div>
-            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
-                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-cogs mr-2"></i> Tools</h3>
-                <p class="text-gray-700">Git, GitHub, Visual Studio</p>
-            </div>
-            <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition fade-in">
-                <h3 class="text-lg font-semibold text-[#800000]"><i class="fas fa-cogs mr-2"></i> Core CS Concepts</h3>
-                <p class="text-gray-700">OOP, DBMS, Data Structures & Algorithms</p>
-            </div>
+
         </div>
+
     </div>
 </section>
 
@@ -151,19 +296,81 @@
         <div class="max-w-4xl mx-auto grid gap-6">
             <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
                 <h3 class="text-xl font-semibold text-[#800000]"><i class="fas fa-shield-alt mr-2"></i> Women Diversiform</h3>
-                <p class="text-gray-700">A secure, full-stack web platform designed to help women report harassment or abuse and access legal and police assistance. Built with React.js, Node.js, and MongoDB, the application includes features such as phone-based authentication, OTP verification, encrypted data handling, complaint tracking, and real-time notifications. The platform prioritizes both user safety and system security, ensuring sensitive data is well protected.</p>
-            </div>
+                <p>A secure, full-stack web platform designed to help women report harassment or abuse and access legal and police assistance. Built with React.js, Node.js, and MongoDB, the application includes features such as phone-based authentication, OTP verification, encrypted data handling, complaint tracking, and real-time notifications. The platform prioritizes both user safety and system security, ensuring sensitive data is well protected.
+
+</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">React.js</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Node.js</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">MongoDB</span>
+</div>
+
+<div class="mt-4">
+    <a
+        href="https://github.com/Pujitha-sai/Recommendation_System"
+        target="_blank"
+        class="inline-flex items-center bg-[#800000] text-white px-4 py-2 rounded-lg hover:bg-[#A52A2A] transition"
+    >
+        <i class="fab fa-github mr-2"></i>
+        View Code
+    </a>
+</div>
+</div>
             <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
                 <h3 class="text-xl font-semibold text-[#800000]"><i class="fab fa-twitter mr-2"></i> Twitter Recommendation System</h3>
                 <p class="text-gray-700">Developed a machine learning-based recommendation engine using collaborative filtering to suggest personalized follow recommendations. The system analyzes user behavior, mutual connections, and interaction patterns to generate relevant suggestions. Built in Python, the project focuses on enhancing user engagement and was evaluated for accuracy and user relevance.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Python</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Collaborative Filtering</span>
+</div>
+
+<div class="mt-4">
+    <a
+        href="https://github.com/Pujitha-sai/Recommendation_System"
+        target="_blank"
+        class="inline-flex items-center bg-[#800000] text-white px-4 py-2 rounded-lg hover:bg-[#A52A2A] transition"
+    >
+        <i class="fab fa-github mr-2"></i>
+        View Code
+    </a>
+</div>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
                 <h3 class="text-xl font-semibold text-[#800000]"><i class="fas fa-ad mr-2"></i> User Behavior Prediction</h3>
                 <p class="text-gray-700">Designed and implemented a logistic regression model to predict whether a user would click on an advertisement, based on behavioral and demographic data. The project involved data preprocessing, model training, and evaluation using metrics like accuracy, precision, and confusion matrix. It provides insights into ad targeting and user engagement strategies.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Python</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Logistic Regression</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Data Analysis</span>
+</div>
+
+<div class="mt-4">
+    <span class="text-sm italic text-gray-500">
+        Repository available upon request.
+    </span>
+</div>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:scale-105 fade-in">
                 <h3 class="text-xl font-semibold text-[#800000]"><i class="fab fa-twitter mr-2"></i> Address Book Application</h3>
                 <p class="text-gray-700">Built a responsive contact management application using the MERN stack (MongoDB, Express.js, React.js, Node.js). The app allows users to perform CRUD operations, validate form inputs, and manage contact data efficiently. It features a clean UI and is integrated with RESTful APIs for smooth frontend-backend communication.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Express.js</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">React.js</span>
+    <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Node.js</span>
+</div>
+
+<div class="mt-4">
+    <a
+        href="https://github.com/Pujitha-sai/Address_Book"
+        target="_blank"
+        class="inline-flex items-center bg-[#800000] text-white px-4 py-2 rounded-lg hover:bg-[#A52A2A] transition"
+    >
+        <i class="fab fa-github mr-2"></i>
+        View Code
+    </a>
+</div>
             </div>
         </div>
     </div>
@@ -174,7 +381,7 @@
     <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold text-[#800000] mb-8 text-center">Contact Me</h2>
         <div class="max-w-3xl mx-auto text-center fade-in">
-            <p class="text-lg text-gray-700 mb-4"><i class="fas fa-envelope mr-2"></i> Email: billekantipsujithasai@gmail.com</p>
+            <p class="text-lg text-gray-700 mb-4"><i class="fas fa-envelope mr-2"></i> Email: billekantipujithasai@gmail.com</p>
             <p class="text-lg text-gray-700 mb-4"><i class="fas fa-phone mr-2"></i> Phone: +91 9553172422</p>
 
             <div class="mt-8">
@@ -193,7 +400,7 @@
 <!-- Footer -->
 <footer class="bg-[#C8A2C8] text-white py-6">
     <div class="container mx-auto px-4 text-center">
-        <p class="mb-2">© 2025 Pujitha Sai Billekanti. All rights reserved.</p>
+        <p class="mb-2">© 2026 Pujitha Sai Billekanti. All rights reserved.</p>
     </div>
 </footer>
 
@@ -247,7 +454,7 @@
     fadeIns.forEach(el => observer.observe(el));
 
     // Typewriter effect
-    const texts = ['Aspiring Software Engineer', 'Passionate Developer', 'Machine Learning Enthusiast'];
+    const texts = ['Analyst Trainee at Cognizant', 'Building Scalable Solutions','React.js & Python Developer'];
     let index = 0, charIndex = 0, currentText = '';
     const typewriterElement = document.getElementById('typewriter-text');
     function type() {
