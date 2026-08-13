@@ -463,13 +463,13 @@ Passionate about developing secure, efficient, and user-centric software, I enjo
                 </div>
                 <div class="flex items-center gap-3">
                     <!-- Download link: uses Drive download URL -->
-                    <a id="download-resume" href="https://drive.google.com/uc?export=download&id=1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9" download class="text-sm px-3 py-2 bg-[#800000] text-white rounded-md hover:bg-[#A52A2A] transition">Download</a>
+                    <a id="download-resume" href="https://drive.google.com/file/d/1ACloUU2JgA0IvFFJN5iz5bByozvEsD1q/view?usp=drive_link" download class="text-sm px-3 py-2 bg-[#800000] text-white rounded-md hover:bg-[#A52A2A] transition">Download</a>
                     <button id="close-resume" class="px-3 py-2 rounded-md bg-gray-100 hover:bg-gray-200">Close</button>
                 </div>
             </div>
             <div class="modal-body">
                 <!-- Embedded Google Drive preview -->
-                <iframe id="resume-frame" src="https://drive.google.com/file/d/1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9/preview" title="Resume" width="100%" height="100%" style="border:none;"></iframe>
+                <iframe id="resume-frame" src="https://drive.google.com/file/d/1ACloUU2JgA0IvFFJN5iz5bByozvEsD1q/preview" title="Resume" width="100%" height="100%" style="border:none;"></iframe>
             </div>
         </div>
     </div>
@@ -540,8 +540,8 @@ Passionate about developing secure, efficient, and user-centric software, I enjo
     const resumeFrame = document.getElementById('resume-frame');
 
     // Use Drive preview link here (already set in HTML)
-    const resumePathPreview = "https://drive.google.com/file/d/1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9/preview";
-    const resumeDownload = "https://drive.google.com/uc?export=download&id=1U41_qD7uN2vy4gnDfEk9PXC51l8pS7f9";
+    const resumePathPreview = "https://drive.google.com/file/d/1ACloUU2JgA0IvFFJN5iz5bByozvEsD1q/preview";
+    const resumeDownload = "https://drive.google.com/file/d/1ACloUU2JgA0IvFFJN5iz5bByozvEsD1q/view?usp=drive_link";
 
     openBtn.addEventListener('click', () => {
         resumeFrame.src = resumePathPreview;
