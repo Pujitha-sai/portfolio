@@ -47,7 +47,7 @@ Currently working as an Analyst Trainee at Cognizant and building practical soft
 
 ## 🔗 Links
 
-**Portfolio:** https://portfolio-jft4ce7vn-pujithas-projects-b15e7536.vercel.app/
+**Portfolio:** https://portfolio-gray-seven-c473n5dyvx.vercel.app/
 
 **GitHub:** https://github.com/Pujitha-sai
 
